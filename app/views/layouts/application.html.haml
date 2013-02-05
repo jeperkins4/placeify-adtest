@@ -35,16 +35,12 @@
           ids = obj.combination.ids.split(",");
         }
         function loadResources(json) {
-          console.log(json);
           for(var i = 0; i < json.length; i++) {
             obj = json[i];
             for(var j = 0; j < ids.length; j++) {
               if (parseInt(ids[j]) == obj.ad_resource.id) {
                 var resource_data = obj.ad_resource.resource_data;
                 var area_tag = '#'+obj.ad_resource.area.code;
-                console.log(resource_data);
-                console.log(extent);
-                console.log(ids);
                 $(area_tag).append(resource_data);
               }
             }
