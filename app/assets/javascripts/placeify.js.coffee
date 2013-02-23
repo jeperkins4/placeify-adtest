@@ -1,14 +1,14 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-loadResources = (json) ->
+window.loadResources = (json) ->
   i = 0
 
   while i < json.length
     obj = json[i]
     resources[i] = obj.ad_resource
     i++
-loadPlaylist = (data) ->
+window.loadPlaylist = (data) ->
   if data.combinations.length > 0
     obj = data.combinations[Math.floor(Math.random() * data.combinations.length)][0]
     extent = obj.combination.extent
