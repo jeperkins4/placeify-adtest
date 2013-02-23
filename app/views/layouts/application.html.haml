@@ -39,20 +39,22 @@
         }
 
         function loadPlaylist(data) {
-          var obj = data.combinations[Math.floor(Math.random()*data.combinations.length)][0];
-          extent = obj.combination.extent;
-          code = obj.combination.code;
-          ids = obj.combination.ids.split(",");
-          for(var i = 0; i < ids.length; i++) {
-            for(var j = 0; j < resources.length; j++) {
-              resource = resources[j];
-              if ((parseInt(ids[i]) == resource.id) && (resource.area.code == code)) {
-                var resource_data = resource.resource_data;
-                var area_tag = '#' + resource.area.code;
-                $(area_tag).append(resource_data);
+          if (data.combinations.length > 0) {
+            var obj = data.combinations[Math.floor(Math.random()*data.combinations.length)][0];
+            extent = obj.combination.extent;
+            code = obj.combination.code;
+            ids = obj.combination.ids.split(",");
+            for(var i = 0; i < ids.length; i++) {
+              for(var j = 0; j < resources.length; j++) {
+                resource = resources[j];
+                if ((parseInt(ids[i]) == resource.id) && (resource.area.code == code)) {
+                  var resource_data = resource.resource_data;
+                  var area_tag = '#' + resource.area.code;
+                  $(area_tag).append(resource_data);
+                }
               }
             }
-          }
+          } // End combinations
         }
     %script(type="text/javascript" src="http://placeify.herokuapp.com/things/secureidnews.js?callback=loadResources")
     %script(type="text/javascript" src="http://placeify.herokuapp.com/playlists/secureidnews.js?callback=loadPlaylist")
