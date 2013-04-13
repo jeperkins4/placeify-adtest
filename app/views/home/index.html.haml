@@ -3,7 +3,12 @@
     #leaderboard
       Replace me with leaderboard ad
     %h1 Home#index
-    %p Find me in app/views/home/index.html.haml
+    .content
+      %p Find me in app/views/home/index.html.haml
+      - Faker::Lorem.paragraphs(5).each do |text|
+        %p= text
+
   .span3
     #display
       Replace me with display ad
+#SecureIDNews.site_code

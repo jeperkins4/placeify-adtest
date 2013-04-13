@@ -65,6 +65,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fabrication (2.5.4)
+    ffaker (1.15.0)
     ffi (1.3.1)
     figaro (0.5.3)
       rails (~> 3.0)
@@ -184,6 +185,7 @@ DEPENDENCIES
   database_cleaner (>= 0.9.1)
   email_spec (>= 1.4.0)
   fabrication (>= 2.3.0)
+  ffaker
   figaro (>= 0.5.3)
   haml (>= 3.1.7)
   haml-rails (>= 0.3.5)
