@@ -88,10 +88,10 @@ renderMedia = (resources, areas) ->
       console.log "Sending " + playlist
       _results1.push jQuery.ajax(
         type: "POST"
-        url: "http://placeify.herokuapp.com/sites/traffic.json"
+        url: "http://localhost:5000/sites/traffic.json"
         dataType: "json"
         data:
-          code: "SecureIDNews"
+          code: "Demo"
           playlist: displayed_ids.join()
 
         success: (msg) ->
@@ -115,7 +115,8 @@ selectPlaylist = (resources, site_code) ->
     )
     console.log "URL is "+url
     tags = url[url.length - 1]
-  jQuery.getJSON "http://placeify.herokuapp.com/playlists/" + site_code + ".js?callback=?&tags=" + tags, (data) ->
+  jQuery.getJSON "http://localhost:5000/playlists/" + site_code + ".js?callback=?&tags=" + tags, (data) ->
+    console.log data
     if data.combinations.length > 0
       playlist = data.combinations[Math.floor(Math.random() * data.combinations.length)]
       renderMedia resources, playlist
@@ -125,7 +126,7 @@ buildResources = (site_code) ->
   methodCalled = true
   resources = []
   console.log "Calling resources..."
-  jQuery.getJSON "http://placeify.herokuapp.com/things/" + site_code + ".js?callback=?", (json) ->
+  jQuery.getJSON "http://localhost:5000/things/" + site_code + ".js?callback=?", (json) ->
     i = undefined
     obj = undefined
     obj = undefined
@@ -154,5 +155,5 @@ getUrlVars = ->
 
 jQuery(document).ready ->
   site_code = jQuery(".site_code").attr("id")
-  site_code = "SecureIDNews"
+  site_code = "Demo"
   buildResources site_code unless methodCalled
